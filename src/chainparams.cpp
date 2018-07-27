@@ -172,7 +172,7 @@ public:
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 250 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04c10e83b2703ccf322f7dbd62dd5855ac7c10bd055814ce121ba32607d573b8810c02c0582aed05b4deb9c4b77b26d92428c61256cd42774babea0a073b2ed0c9") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04dc66577bc93634fdeececff53d986f809e778c0d88fa055e45b79ffd8d80900e9961837b279ad6ed2ed905e472fb2742818ce022b6ec9f8d0d42b82edd99f4b7") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
@@ -263,7 +263,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // PIVX: 1 day
         nTargetSpacing = 1 * 60;  // PIVX: 1 minute
-        nLastPOWBlock = 2;
+        nLastPOWBlock = 0;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
