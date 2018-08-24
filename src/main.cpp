@@ -2086,27 +2086,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
 {
     int64_t ret = 0;
 
-    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-        if (nHeight < 200)
-            return 0;
-    }
-
-    if (nHeight <= 43200) {
-        ret = blockValue / 5;
-    } else if (nHeight < 86400 && nHeight > 43200) {
-        ret = blockValue / (100 / 30);
-    } else if (nHeight < (Params().NetworkID() == CBaseChainParams::TESTNET ? 145000 : 151200) && nHeight >= 86400) {
-        ret = 50 * COIN;
-    } else if (nHeight <= Params().LAST_POW_BLOCK() && nHeight >= 151200) {
-        ret = blockValue / 2;
-    } else if (nHeight < Params().Zerocoin_Block_V2_Start()) {
-        return GetSeeSaw(blockValue, nMasternodeCount, nHeight);
-    } else {
-        //When zPIV is staked, masternode only gets 2 PIV
-        ret = 3 * COIN;
-        if (isZPIVStake)
-            ret = 2 * COIN;
-    }
+    ret = blockValue * 0.8;
 
     return ret;
 }

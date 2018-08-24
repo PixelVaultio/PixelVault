@@ -313,8 +313,8 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
     CAmount blockValue = GetBlockValue(pindexPrev->nHeight);
     CAmount masternodePayment = GetMasternodePayment(pindexPrev->nHeight, blockValue, 0, fZPIVStake);
 
-    if (hasPayment) {
-        if (fProofOfStake) {
+    if (fProofOfStake) {
+        if (hasPayment) {
             /**For Proof Of Stake vout[0] must be null
              * Stake reward can be split into many different outputs, so we must
              * use vout.size() to align with several different cases.
@@ -328,13 +328,19 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             //subtract mn payment from the stake reward
             if (!txNew.vout[1].IsZerocoinMint())
                 txNew.vout[i - 1].nValue -= masternodePayment;
-        } else {
+        }
+    } else {
+        txNew.vout[0].nValue = blockValue;
+        txNew.vin[0].scriptSig = (CScript() << (pindexPrev->nHeight + 1) << CScriptNum(0)) + COINBASE_FLAGS;
+        if (hasPayment) {
             txNew.vout.resize(2);
             txNew.vout[1].scriptPubKey = payee;
             txNew.vout[1].nValue = masternodePayment;
-            txNew.vout[0].nValue = blockValue - masternodePayment;
+            txNew.vout[0].nValue -= masternodePayment;
         }
+    }
 
+    if (hasPayment) {
         CTxDestination address1;
         ExtractDestination(payee, address1);
         CBitcoinAddress address2(address1);
