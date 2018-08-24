@@ -208,10 +208,10 @@ void CMasternode::Check(bool forceCheck)
         return;
     }
 
-    if(lastPing.sigTime - sigTime < MASTERNODE_MIN_MNP_SECONDS){
-    	activeState = MASTERNODE_PRE_ENABLED;
-    	return;
-    }
+//    if(lastPing.sigTime - sigTime < MASTERNODE_MIN_MNP_SECONDS){
+//    	activeState = MASTERNODE_PRE_ENABLED;
+//    	return;
+//    }
 
     if (!unitTest) {
         CValidationState state;
@@ -326,7 +326,7 @@ bool CMasternode::IsValidNetAddr()
 {
     // TODO: regtest is fine with any addresses for now,
     // should probably be a bit smarter if one day we start to implement tests for this
-    return Params().NetworkID() == CBaseChainParams::REGTEST ||
+    return Params().NetworkID() == CBaseChainParams::REGTEST || Params().NetworkID() == CBaseChainParams::TESTNET ||
            (IsReachable(addr) && addr.IsRoutable());
 }
 
