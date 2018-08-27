@@ -310,8 +310,8 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
         }
     }
 
-    CAmount blockValue = GetBlockValue(pindexPrev->nHeight);
-    CAmount masternodePayment = GetMasternodePayment(pindexPrev->nHeight, blockValue, 0, fZPIVStake);
+    CAmount blockValue = GetBlockValue(chainActive.Height() + 1);
+    CAmount masternodePayment = GetMasternodePayment(chainActive.Height() + 1, blockValue, 0, fZPIVStake);
 
     if (fProofOfStake) {
         if (hasPayment) {

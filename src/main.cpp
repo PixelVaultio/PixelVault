@@ -1808,21 +1808,24 @@ double ConvertBitsToDouble(unsigned int nBits)
 int64_t GetBlockValue(int nHeight)
 {
     int64_t nSubsidy = 0;
-    if (nHeight == 0) {
+
+    if (nHeight == 1) {
         nSubsidy = 500000 * COIN;
-    } else if (nHeight <= 24999 && nHeight > 0) {
+    } else if (nHeight <= 9999 && nHeight > 1) {
+        nSubsidy = (Params().NetworkID() == CBaseChainParams::TESTNET ? (25000 * COIN) : (0 * COIN));
+    } else if (nHeight <= 35000 && nHeight > 9999) {
         nSubsidy = 15 * COIN;
-    } else if (nHeight <= 49999 && nHeight > 24999) {
+    } else if (nHeight <= 60000 && nHeight > 35000) {
         nSubsidy = 20 * COIN;
-    } else if (nHeight <= 99999 && nHeight > 49999) {
+    } else if (nHeight <= 110000 && nHeight > 60000) {
         nSubsidy = 25 * COIN;
-    } else if (nHeight <= 199999 && nHeight > 99999) {
+    } else if (nHeight <= 210000 && nHeight > 110000) {
         nSubsidy = 20 * COIN;
-    } else if (nHeight <= 499999 && nHeight > 199999) {
+    } else if (nHeight <= 510000 && nHeight > 210000) {
         nSubsidy = 15 * COIN;
-    } else if (nHeight <= 2499999 && nHeight > 499999) {
+    } else if (nHeight <= 2510000 && nHeight > 510000) {
         nSubsidy = 10 * COIN;
-    } else if (nHeight <= 5283361 && nHeight > 2499999) {
+    } else if (nHeight <= 5293347 && nHeight > 2510000) {
         nSubsidy = 7.5 * COIN;
     } else {
         nSubsidy = 5 * COIN;
@@ -3050,7 +3053,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime1 - nTimeStart), 0.001 * (nTime1 - nTimeStart) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime1 - nTimeStart) / (nInputs - 1), nTimeConnect * 0.000001);
 
     //PoW phase redistributed fees to miner. PoS stage destroys fees.
-    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight);
+    CAmount nExpectedMint = GetBlockValue(pindex->nHeight);
     if (block.IsProofOfWork())
         nExpectedMint += nFees;
 
