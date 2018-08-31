@@ -263,11 +263,11 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop PIVX server.");
+            "\nStop Pixel server.");
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "PIVX server stopping";
+    return "Pixel server stopping";
 }
 
 
@@ -351,37 +351,37 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "reconsiderblock", &reconsiderblock, true, true, false},
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
-        /* PIVX features */
-        {"pivx", "masternode", &masternode, true, true, false},
-        {"pivx", "listmasternodes", &listmasternodes, true, true, false},
-        {"pivx", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"pivx", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"pivx", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
-        {"pivx", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
-        {"pivx", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
-        {"pivx", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"pivx", "masternodedebug", &masternodedebug, true, true, false},
-        {"pivx", "startmasternode", &startmasternode, true, true, false},
-        {"pivx", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"pivx", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"pivx", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"pivx", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"pivx", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"pivx", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"pivx", "mnbudget", &mnbudget, true, true, false},
-        {"pivx", "preparebudget", &preparebudget, true, true, false},
-        {"pivx", "submitbudget", &submitbudget, true, true, false},
-        {"pivx", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"pivx", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"pivx", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"pivx", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"pivx", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"pivx", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
-        {"pivx", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"pivx", "checkbudgets", &checkbudgets, true, true, false},
-        {"pivx", "mnsync", &mnsync, true, true, false},
-        {"pivx", "spork", &spork, true, true, false},
-        {"pivx", "getpoolinfo", &getpoolinfo, true, true, false},
+        /* Pixel features */
+        {"pixel", "masternode", &masternode, true, true, false},
+        {"pixel", "listmasternodes", &listmasternodes, true, true, false},
+        {"pixel", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"pixel", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"pixel", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
+        {"pixel", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
+        {"pixel", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
+        {"pixel", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"pixel", "masternodedebug", &masternodedebug, true, true, false},
+        {"pixel", "startmasternode", &startmasternode, true, true, false},
+        {"pixel", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"pixel", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"pixel", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"pixel", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"pixel", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"pixel", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"pixel", "mnbudget", &mnbudget, true, true, false},
+        {"pixel", "preparebudget", &preparebudget, true, true, false},
+        {"pixel", "submitbudget", &submitbudget, true, true, false},
+        {"pixel", "mnbudgetvote", &mnbudgetvote, true, true, false},
+        {"pixel", "getbudgetvotes", &getbudgetvotes, true, true, false},
+        {"pixel", "getnextsuperblock", &getnextsuperblock, true, true, false},
+        {"pixel", "getbudgetprojection", &getbudgetprojection, true, true, false},
+        {"pixel", "getbudgetinfo", &getbudgetinfo, true, true, false},
+        {"pixel", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"pixel", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"pixel", "checkbudgets", &checkbudgets, true, true, false},
+        {"pixel", "mnsync", &mnsync, true, true, false},
+        {"pixel", "spork", &spork, true, true, false},
+        {"pixel", "getpoolinfo", &getpoolinfo, true, true, false},
 
 #ifdef ENABLE_WALLET
         /* Wallet */
@@ -446,11 +446,11 @@ static const CRPCCommand vRPCCommands[] =
         {"zerocoin", "exportzerocoins", &exportzerocoins, false, false, true},
         {"zerocoin", "reconsiderzerocoins", &reconsiderzerocoins, false, false, true},
         {"zerocoin", "getspentzerocoinamount", &getspentzerocoinamount, false, false, false},
-        {"zerocoin", "getzpivseed", &getzpivseed, false, false, true},
-        {"zerocoin", "setzpivseed", &setzpivseed, false, false, true},
+        {"zerocoin", "getzpxlseed", &getzpxlseed, false, false, true},
+        {"zerocoin", "setzpxlseed", &setzpxlseed, false, false, true},
         {"zerocoin", "generatemintlist", &generatemintlist, false, false, true},
-        {"zerocoin", "searchdzpiv", &searchdzpiv, false, false, true},
-        {"zerocoin", "dzpivstate", &dzpivstate, false, false, true}
+        {"zerocoin", "searchdzpxl", &searchdzpxl, false, false, true},
+        {"zerocoin", "dzpxlstate", &dzpxlstate, false, false, true}
 
 #endif // ENABLE_WALLET
 };
@@ -614,7 +614,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> pivx-cli " + methodname + " " + args + "\n";
+    return "> pixel-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

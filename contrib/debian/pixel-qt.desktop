@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Pixel
+Comment=Pixel P2P Cryptocurrency
+Comment[fr]=Pixel, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Pixel, eşten eşe kriptografik sanal para birimi
+Exec=pixel-qt %u
+Terminal=false
+Type=Application
+Icon=pixel128
+MimeType=x-scheme-handler/pixel;
+Categories=Office;Finance;

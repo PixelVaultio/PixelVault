@@ -1,0 +1,26 @@
+[Unit]
+Description=Pixel's distributed currency daemon
+After=network.target
+
+[Service]
+User=pixel
+Group=pixel
+
+Type=forking
+PIDFile=/var/lib/pixeld/pixeld.pid
+
+ExecStart=/usr/bin/pixeld -daemon -pid=/var/lib/pixeld/pixeld.pid \
+          -conf=/etc/pixel/pixel.conf -datadir=/var/lib/pixeld
+
+ExecStop=-/usr/bin/pixel-cli -conf=/etc/pixel/pixel.conf \
+         -datadir=/var/lib/pixeld stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
