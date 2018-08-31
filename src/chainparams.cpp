@@ -160,7 +160,7 @@ public:
         nTargetSpacing = 1 * 60;  // PIVX: 1 minute
         nMaturity = 100;
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 21000000 * COIN;
+        nMaxMoneyOut = 50000000 * COIN;
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 259200;
@@ -168,7 +168,7 @@ public:
         nZerocoinStartHeight = 863787;
         nZerocoinStartTime = 1508214600; // October 17, 2017 4:30:00 AM
         nBlockEnforceSerialRange = 895400; //Enforce serial range starting this block
-        nBlockRecalculateAccumulators = 908000; //Trigger a recalculation of accumulators
+        nBlockRecalculateAccumulators = 150; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 891737; //First block that bad serials emerged
         nBlockLastGoodCheckpoint = 891730; //Last valid accumulator checkpoint
         nBlockEnforceInvalidUTXO = 902850; //Start enforcing the invalid UTXO's
@@ -197,31 +197,17 @@ public:
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
-        genesis.nVersion = 1;
         genesis.nTime = 1532945683;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 3638673;
+        genesis.nNonce = 5484956;
 
         hashGenesisBlock = genesis.GetHash();
 
 
-//        while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
-//            genesis.nNonce ++;
-//        }
-//
-//        std::cout << genesis.nNonce << std::endl;
-//        std::cout << genesis.GetHash().GetHex() << std::endl;
-//        std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-
-
-        assert(hashGenesisBlock == uint256("0x000004c1537c43f6a882a96a92f1b73c09d3e3ce2abf4a7917d7461de4598b79"));
+        assert(hashGenesisBlock == uint256("0x0000076116e7f71f9ae8b81b68c8409d25848ab7f74f3c8de46771edc69e1eeb"));
         assert(genesis.hashMerkleRoot == uint256("0xc6aa6de086838e6c1c6b2fcb9ccd0c95353c3e50a9ebbda777a3bcb14b2002a0"));
 
-        /*vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "pivx.seed.fuzzbawls.pw"));     // Primary DNS Seeder from Fuzzbawls
-        vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "pivx.seed2.fuzzbawls.pw"));    // Secondary DNS Seeder from Fuzzbawls
-        vSeeds.push_back(CDNSSeedData("coin-server.com", "coin-server.com"));         // Single node address
-        vSeeds.push_back(CDNSSeedData("s3v3nh4cks.ddns.net", "s3v3nh4cks.ddns.net")); // Single node address
-        vSeeds.push_back(CDNSSeedData("178.254.23.111", "178.254.23.111"));           // Single node address*/
+//        vSeeds.push_back(CDNSSeedData("178.254.23.111", "178.254.23.111"));           // Single node address*/
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
@@ -296,25 +282,25 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // PIVX: 1 day
         nTargetSpacing = 1 * 60;  // PIVX: 1 minute
-        nLastPOWBlock = 135;
+        nLastPOWBlock = 120;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
-        nMaxMoneyOut = 43199500 * COIN;
-        nZerocoinStartHeight = 10;
-        nZerocoinStartTime = 1533204569;
+        nMaxMoneyOut = 50000000 * COIN;
+        nZerocoinStartHeight = 170;
+        nZerocoinStartTime = 1535095587;
         nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = 9908000; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 9891737; //First block that bad serials emerged
         nBlockLastGoodCheckpoint = 9891730; //Last valid accumulator checkpoint
         nBlockEnforceInvalidUTXO = 9902850; //Start enforcing the invalid UTXO's
         nInvalidAmountFiltered = 0; //Amount of invalid coins filtered through exchanges, that should be considered valid
-        nBlockZerocoinV2 = 120; //!> The block that zerocoin v2 becomes active
+        nBlockZerocoinV2 = 180; //!> The block that zerocoin v2 becomes active
         nEnforceNewSporkKey = 1533204579; //!> Sporks signed after Wednesday, March 21, 2018 4:00:00 AM GMT must use the new spork key
         nRejectOldSporkKey = 1533204549; //!> Reject old spork key after Saturday, March 31, 2018 12:00:00 AM GMT
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        const char* pszTimestamp = "U.S. News & World Report Jan 28 2016 With His Absence, Trump Dominates Another Debate";
+        const char* pszTimestamp = "TESTNET";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -325,30 +311,25 @@ public:
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
-        genesis.nVersion = 1;
-        genesis.nTime = 1533204549;
+        genesis.nTime = 1535431850;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 479216;
+        genesis.nNonce = 362821;
 
 //        while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
 //            genesis.nNonce ++;
 //        }
 //
-//        std::cout << genesis.nNonce << std::endl;
-//        std::cout << genesis.GetHash().GetHex() << std::endl;
-//        std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
+//        std::cout << "Nonce:\t\t\t" << genesis.nNonce << std::endl;
+//        std::cout << "Genesis Hash:\t\t" << genesis.GetHash().GetHex() << std::endl;
+//        std::cout << "Merkle Root Hash:\t" << genesis.hashMerkleRoot.GetHex() << std::endl;
 
         hashGenesisBlock = genesis.GetHash();
 
-
-        assert(hashGenesisBlock == uint256("0x000004a497976ad6497f75aed8d353b10db0b5f12f97c07424e7f8278b27f979"));
-        assert(genesis.hashMerkleRoot == uint256("0xc6aa6de086838e6c1c6b2fcb9ccd0c95353c3e50a9ebbda777a3bcb14b2002a0"));
+        assert(hashGenesisBlock == uint256("0x00000db33a1073667f2de857021c12980781c66df0e0a1dc9a4466cbc3f92c7c"));
+        assert(genesis.hashMerkleRoot == uint256("0x00ab889d8175709db5465eb5c67bb2593fe5fd70cae5853ad4a3212dd344426d"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        //vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "pivx-testnet.seed.fuzzbawls.pw"));
-        //vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "pivx-testnet.seed2.fuzzbawls.pw"));
-        //vSeeds.push_back(CDNSSeedData("s3v3nh4cks.ddns.net", "s3v3nh4cks.ddns.net"));
         //vSeeds.push_back(CDNSSeedData("88.198.192.110", "88.198.192.110"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet pivx addresses start with 'x' or 'y'
@@ -408,22 +389,14 @@ public:
         nTargetTimespan = 24 * 60 * 60; // PIVX: 1 day
         nTargetSpacing = 1 * 60;        // PIVX: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1454124731;
+        genesis.nTime = 1535431850;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 2287179;
+        genesis.nNonce = 362821;
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 51476;
 
-        while (!CheckProof(genesis.GetHash(), genesis.nBits)) {
-            genesis.nNonce ++;
-        }
-
-        std::cout << genesis.nNonce << std::endl;
-        std::cout << genesis.GetHash().GetHex() << std::endl;
-        std::cout << genesis.hashMerkleRoot.GetHex() << std::endl;
-
-        assert(hashGenesisBlock == uint256("0x000004d16ee8724fa99a0164d7a6129619bb46e1a23b148d920bff4c3fb48ee2"));
+        assert(hashGenesisBlock == uint256("0x00000db33a1073667f2de857021c12980781c66df0e0a1dc9a4466cbc3f92c7c"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
