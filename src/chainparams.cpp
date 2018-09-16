@@ -188,7 +188,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "U.S. News & World Report Jan 28 2016 With His Absence, Trump Dominates Another Debate";
+        const char* pszTimestamp = "N.Y Times Sept 14 2018 Florence Is Blamed for at Least Five Deaths as It Roars Ashore in North Carolina";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -198,15 +198,15 @@ public:
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
-        genesis.nTime = 1532945683;
+        genesis.nTime = 1537013521;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 5484956;
+        genesis.nNonce = 254976;
 
         hashGenesisBlock = genesis.GetHash();
 
 
-        assert(hashGenesisBlock == uint256("0x0000076116e7f71f9ae8b81b68c8409d25848ab7f74f3c8de46771edc69e1eeb"));
-        assert(genesis.hashMerkleRoot == uint256("0xc6aa6de086838e6c1c6b2fcb9ccd0c95353c3e50a9ebbda777a3bcb14b2002a0"));
+        assert(hashGenesisBlock == uint256("0x00000888628dce9de2b03938924b2ac38e63657eb172160ac8d2d334f2e95e9d"));
+        assert(genesis.hashMerkleRoot == uint256("0xa1895aef5fbb70c0ddce0a6c9fba664a837ea6687836d82393faaa0acbc167ad"));
 
 //        vSeeds.push_back(CDNSSeedData("178.254.23.111", "178.254.23.111"));           // Single node address*/
 
